@@ -48,17 +48,17 @@ export default function DataStructuresPage() {
     ]
 
     return (
-        <div className="container py-8 mx-auto">
-            <div className="flex flex-col space-y-6 items-center">
-                <div>
+        <div className="container py-8 mx-auto flex justify-center">
+            <div className="flex flex-col space-y-6 items-center max-w-6xl">
+                <div className="text-center">
                     <h1 className="text-3xl font-bold tracking-tight">Data Structures</h1>
                     <p className="text-muted-foreground">Explore different data structures and their operations</p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
                     {dataStructures.map((dataStructure) => (
-                        <Card key={dataStructure.id}>
-                            <CardHeader>
+                        <Card key={dataStructure.id} className="flex flex-col">
+                            <CardHeader className="text-center">
                                 <CardTitle>{dataStructure.name}</CardTitle>
                                 <CardDescription>
                                     {dataStructure.operations && `Operations: ${dataStructure.operations}`}
@@ -66,8 +66,8 @@ export default function DataStructuresPage() {
                                     {dataStructure.representations && `Representations: ${dataStructure.representations}`}
                                 </CardDescription>
                             </CardHeader>
-                            <CardContent>
-                                <p className="text-sm text-muted-foreground">{dataStructure.description}</p>
+                            <CardContent className="flex-grow">
+                                <p className="text-sm text-muted-foreground text-center">{dataStructure.description}</p>
                             </CardContent>
                             <CardFooter>
                                 <Button asChild className="w-full">
