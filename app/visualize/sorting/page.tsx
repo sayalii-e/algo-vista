@@ -4,46 +4,47 @@ import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 
-export default function DataStructuresPage() {
-    const dataStructures = [
+export default function SortingPage() {
+    const sortingAlgorithms = [
         {
-            id: "array",
-            name: "Array",
-            description: "A collection of elements stored at contiguous memory locations, each identified by an index.",
-            operations: "Insertion, Deletion, Searching, Traversal",
-        },
-        {
-            id: "linked-list",
-            name: "Linked List",
+            id: "bubble-sort",
+            name: "Bubble Sort",
             description:
-                "A linear data structure where elements are not stored at contiguous locations but connected using pointers.",
-            operations: "Insertion, Deletion, Traversal",
-            types: "Singly, Doubly, Circular",
+                "A simple comparison-based sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order.",
+            complexity: "O(n²)",
         },
         {
-            id: "stack",
-            name: "Stack",
-            description: "A linear data structure that follows the Last In First Out (LIFO) principle.",
-            operations: "Push, Pop, Peek",
+            id: "selection-sort",
+            name: "Selection Sort",
+            description:
+                "An in-place comparison sorting algorithm that divides the input list into two parts: a sorted sublist and an unsorted sublist.",
+            complexity: "O(n²)",
         },
         {
-            id: "queue",
-            name: "Queue",
-            description: "A linear data structure that follows the First In First Out (FIFO) principle.",
-            operations: "Enqueue, Dequeue",
-            types: "Simple, Circular, Priority, Deque",
+            id: "insertion-sort",
+            name: "Insertion Sort",
+            description:
+                "Builds the final sorted array one item at a time. It's much less efficient on large lists than more advanced algorithms.",
+            complexity: "O(n²)",
         },
         {
-            id: "tree",
-            name: "Tree",
-            description: "A hierarchical data structure with a root value and subtrees of children with a parent node.",
-            types: "Binary Tree, Binary Search Tree, AVL Tree, Heap",
+            id: "merge-sort",
+            name: "Merge Sort",
+            description:
+                "An efficient, stable, comparison-based, divide and conquer sorting algorithm that divides the input array into two halves.",
+            complexity: "O(n log n)",
         },
         {
-            id: "graph",
-            name: "Graph",
-            description: "A non-linear data structure consisting of nodes and edges connecting these nodes.",
-            representations: "Adjacency Matrix, Adjacency List",
+            id: "quick-sort",
+            name: "Quick Sort",
+            description: "An efficient, in-place sorting algorithm that uses divide and conquer strategy to sort elements.",
+            complexity: "O(n log n) average, O(n²) worst case",
+        },
+        {
+            id: "heap-sort",
+            name: "Heap Sort",
+            description: "A comparison-based sorting algorithm that uses a binary heap data structure to sort elements.",
+            complexity: "O(n log n)",
         },
     ]
 
@@ -56,22 +57,20 @@ export default function DataStructuresPage() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
-                    {dataStructures.map((dataStructure) => (
-                        <Card key={dataStructure.id} className="flex flex-col">
+                    {sortingAlgorithms.map((algorithm) => (
+                        <Card key={algorithm.id} className="flex flex-col">
                             <CardHeader className="text-center">
-                                <CardTitle>{dataStructure.name}</CardTitle>
+                                <CardTitle>{algorithm.name}</CardTitle>
                                 <CardDescription>
-                                    {dataStructure.operations && `Operations: ${dataStructure.operations}`}
-                                    {dataStructure.types && `Types: ${dataStructure.types}`}
-                                    {dataStructure.representations && `Representations: ${dataStructure.representations}`}
+                                    Time Complexity: {algorithm.complexity}
                                 </CardDescription>
                             </CardHeader>
                             <CardContent className="flex-grow">
-                                <p className="text-sm text-muted-foreground text-center">{dataStructure.description}</p>
+                                <p className="text-sm text-muted-foreground text-center">{algorithm.description}</p>
                             </CardContent>
                             <CardFooter>
                                 <Button asChild className="w-full">
-                                    <Link href={`/visualize/data-structures/${dataStructure.id}`}>
+                                    <Link href={`/visualize/sorting/${algorithm.id}`}>
                                         Visualize <ArrowRight className="ml-2 h-4 w-4" />
                                     </Link>
                                 </Button>
